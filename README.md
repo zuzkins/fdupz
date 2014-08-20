@@ -38,6 +38,7 @@ Running the dev environment
    + run the executable from the node-webkit you downloaded earlier
    + `cd dir-where-fdupz-is`
    + `$DIR_WITH_NODE_WEBKIT/nw/node-webkit.app/Contents/MacOS/node-webkit .`
+       + if you have troubles running it on linux due to missing `libudev.so.0` try one to run it as described on the [wiki](https://github.com/rogerwang/node-webkit/wiki/The-solution-of-lacking-libudev.so.0)
        + the `.` at the end is important
        + the path will depend on where you unzipped the node-webkit distribution and the runnable file depends on the platform you are trying to run it on
        
