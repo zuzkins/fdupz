@@ -12,12 +12,17 @@
     (.on w "file"
       (fn [root stats go-next]
         (when stats
-          (put! out {:type :file :stats stats :path (str root "/" (.-name stats))}))
+          (put! out {:type :file
+                     :path (str root "/" (aget stats "name"))
+                     :name (aget stats "name")
+                     :size (aget stats "size")}))
         (go-next)))
     (.on w "directory"
       (fn [root stats go-next]
         (when stats
-          (put! out {:type :dir :stats stats :path (str root "/" (.-name stats))}))
+          (put! out {:type :dir
+                     :path (str root "/" (aget stats "name"))
+                     :name (aget stats "name")}))
         (go-next)))
     (.on w "error"
       (fn [root errors go-next]
