@@ -14,7 +14,7 @@
   (swap! counter inc))
 
 (defn scan-dir [path state]
-  (om/update! state :files {})
+  (om/update! state :files {:all []})
   (om/update! state :total-size 0)
   (om/update! state :total-count 0)
   (let [ch (fs/walk path)]
