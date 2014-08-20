@@ -9,6 +9,6 @@
   },
   "node-remote": "<local>",
   "dependencies": {
-    "walk": "^2.3.3"
+      "walk": "2.3.3"
   }
 }
