@@ -14,21 +14,24 @@
   (swap! counter inc))
 
 (defn scan-dir [path state]
-  (om/update! state :files [])
+  (om/update! state :files {})
   (om/update! state :total-size 0)
   (om/update! state :total-count 0)
   (let [ch (fs/walk path)]
     (go-loop [acc []]
       (let [item (<! ch)]
-        (when item
+        (if item
           (if (= :file (:type item))
             (let [complete (assoc item :id (next-id))]
-              (om/transact! state :total-count inc4)
+              (om/transact! state :total-count inc)
               (om/transact! state :total-size
                 (fn [s]
-                  (+ s (or (-> item :stats .-size) 0))))
+                  (+ s (get item :size 0))))
               (recur (conj acc complete)))
-            (recur acc)))))))
+            (recur acc))
+          (do
+            (om/update! state :stage :ready)
+            (om/update! state [:files :all] acc)))))))
 
 (defcomponent directory-input [data owner]
   (init-state [_]
@@ -56,6 +59,9 @@
   (render-state [_ {:keys [scan-chan]}]
     (condp = (:stage data)
       :scanning
+      (om/build scan-progress data)
+
+      :ready
       (om/build scan-progress data)
 
       ;;(dom/h1 "Default")
