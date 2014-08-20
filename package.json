@@ -1,0 +1,14 @@
+{
+  "name": "FindDupz",
+  "main": "http://localhost:3000/assets/app",
+  "version": "0.0.1",
+  "window": {
+    "toolbar": true,
+    "widht": 1200,
+    "height": 900
+  },
+  "node-remote": "<local>",
+  "dependencies": {
+    "walk": "^2.3.3"
+  }
+}

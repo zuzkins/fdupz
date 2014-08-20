@@ -1,0 +1,1 @@
+;goog.require('clojure.browser.repl');clojure.browser.repl.connect.call(null, 'http://localhost:54450/6941/repl');
