@@ -33,7 +33,7 @@ Running the dev environment
    + this will start the interactive dev environment for clojure
 3. after the repl starts
    + either in your favorite editor connect to nREPL or directly in the terminal
-   + write `(go)` which will fire up jetty server for serving the artefacts for the project
+   + write `(go)` followed by ENTER in the REPL. This will fire up jetty server for serving the artefacts for the project
 4. run the node-webkit
    + run the executable from the node-webkit you downloaded earlier
    + `cd dir-where-fdupz-is`
